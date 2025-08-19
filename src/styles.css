@@ -1,0 +1,239 @@
+/* ================================
+   Warm peach/cream theme
+   ================================ */
+:root
+
+{
+  /* brand */
+  --brand-1: #E89C8F;       /* peach */
+  --brand-1-dark: #D47C65;  /* deeper peach for accents/text */
+  --brand-2: #F6E3B4;       /* cream */
+
+  /* neutrals */
+  --ink: #0f172a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+
+  /* layout */
+  --sidebar-w: 260px;
+  --radius: 14px;
+
+  --accent-thin: 10px;
+}
+
+
+
+/* page base */
+body {
+  background: #f7f8fa; /* neutral canvas; the panel will set its own bg */
+  color: var(--ink);
+  margin: 0;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* layout grid */
+.layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: 100vh; }
+.layout.collapsed { grid-template-columns: 64px 1fr; }
+
+/* ================================
+   Sidebar (full peach)
+   ================================ */
+.sidebar {
+  background: var(--brand-1);
+  border-right: 1px solid var(--border);
+  padding: 20px 14px;
+}
+
+/* avatar ring + sizing */
+.sidebar .avatar {
+  width: 44px; height: 44px; border-radius: 999px; object-fit: cover;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(255,255,255,.55);
+}
+
+/* text on peach */
+.sidebar .name { color: #111827; font-weight: 600; margin-top: 8px; }
+.sidebar .email { font-size: 12px; color: rgba(0,0,0,.75); }
+.sidebar .menu-label { font-size: 12px; color: rgba(0,0,0,.7); }
+
+/* menu items */
+.sidebar .navlink {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 10px; color: #111827;
+}
+.sidebar .navlink.active,
+.sidebar .navlink:hover {
+  background: rgba(255,255,255,.45);
+  border-left: 4px solid #fff;
+  padding-left: 8px;
+}
+
+/* collapsed sidebar */
+.sidebar.collapsed .name,
+.sidebar.collapsed .email,
+.sidebar.collapsed .menu-label,
+.sidebar.collapsed .navlink span { display: none; }
+.sidebar.collapsed .navlink { justify-content: center; }
+
+/* ================================
+   Header
+   ================================ */
+.header {
+    display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; background: var(--brand-2); /* cream */
+  border-bottom: var(--accent-thin) solid var(--brand-1);
+  position: sticky; top:0; z-index:5;
+}
+.header .title { font-weight: 700; font-size: 24px; margin: 0; color: var(--brand-1); }
+.header .btn-toggle {
+  border: 1px solid var(--brand-1); background: #fff; border-radius: 10px; padding: 8px 12px;
+  color: var(--brand-1-dark);
+}
+.header .btn-toggle:hover { background: var(--brand-2); }
+
+/* ================================
+   Content + Cards + Table
+   ================================ */
+.content { padding: 18px;
+  background: var(--brand-2);                 /* cream fill */
+  min-height: calc(100vh - 60px);    }
+
+.card-lite {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: 0 10px 24px rgba(232,156,143,0.08);
+}
+
+.table-wrapper { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); }
+.table-wrapper table { margin: 0; }
+.table-wrapper tbody tr:hover { background: rgba(246,227,180,0.25); } /* cream tint */
+
+/* ================================
+   Pagination
+   ================================ */
+.pagination-wrap { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+.pagination .page-item.active .page-link {
+  background-color: var(--brand-1);
+  border-color: var(--brand-1);
+}
+.pagination .page-link { color: var(--brand-1-dark); }
+.pagination .page-link:hover { background: var(--brand-2); }
+/* === Sidebar: bigger text + bigger avatar === */
+
+/* 1) Bigger avatar (and keep it smaller when collapsed) */
+.sidebar .avatar{
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(255,255,255,.55);
+}
+.layout.collapsed .sidebar .avatar{
+  width: 40px;
+  height: 40px;
+}
+
+/* 2) Stronger typography in the sidebar */
+.sidebar .name{
+  font-size: 22px;       /* was smaller */
+  font-weight: 800;      /* bolder */
+  letter-spacing: .2px;
+}
+.sidebar .email{
+  font-size: 14px;       /* was 12px */
+  font-weight: 500;
+}
+.sidebar .menu-label{
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* 3) Larger & bolder nav items (text + icons) */
+.sidebar .navlink{
+  font-size: 18px;       /* increase label size */
+  font-weight: 600;      /* bolder labels */
+  padding: 12px 14px;    /* a bit more touch target */
+}
+.sidebar .navlink svg{
+  width: 20px;
+  height: 20px;
+}
+/* Make icons a tad larger when collapsed */
+.layout.collapsed .sidebar .navlink svg{
+  width: 22px;
+  height: 22px;
+}
+/* === Peach-filled sections (wrap any page area with this) === */
+.section-peach{
+  background: var(--brand-1);               /* peach fill */
+  min-height: calc(100vh - 60px);           /* fill below the header */
+  padding: 18px;
+  /* optional: soften the area a bit */
+  background-image: linear-gradient(180deg,
+    rgba(232,156,143,.96), rgba(232,156,143,.9));
+}
+
+/* Make text inside these sections a touch bolder & deeper */
+.section-peach h1,
+.section-peach h2,
+.section-peach .title,
+.section-peach .form-label,
+.section-peach .table thead th{
+  color: #1f2937;     /* deep slate */
+  font-weight: 700;   /* bold headings/labels */
+}
+
+/* Main body text in these sections slightly bold */
+.section-peach .table tbody td,
+.section-peach .card-lite td,
+.section-peach .card-lite .form-control{
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Pagination styling on peach for better contrast */
+.section-peach .pagination .page-item.active .page-link{
+  background-color: var(--brand-1-dark);
+  border-color: var(--brand-1-dark);
+}
+.section-peach .pagination .page-link{
+  color: #fff;
+  background: rgba(255,255,255,.35);
+  border-color: rgba(255,255,255,.45);
+}
+.section-peach .pagination .page-link:hover{
+  background: rgba(255,255,255,.55);
+}
+/* === Make only the card/table block peach === */
+.card-peach{
+  background: var(--brand-1);                 /* peach */
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 10px 24px rgba(232,156,143,0.12);
+  border-radius: var(--radius);
+}
+
+/* headings/labels inside the card: deeper & bolder */
+.card-peach h1,
+.card-peach h2,
+.card-peach h5,
+.card-peach .form-label,
+.card-peach .table thead th{
+  color: #1f2937;
+  font-weight: 700;
+}
+
+/* body text inside card: slightly bolder & deeper */
+.card-peach,
+.card-peach .table tbody td{
+  color: #111827;
+  font-weight: 600;
+}
+
+/* make Bootstrap table background transparent so the card's peach shows */
+.card-peach .table > :not(caption) > * > *{
+  background-color: transparent !important;
+}
+
+/* nicer hover on peach */
+.card-peach .table-hover tbody tr:hover{
+  background: rgba(255,255,255,.12);
+}
