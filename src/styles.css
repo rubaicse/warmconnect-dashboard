@@ -149,7 +149,7 @@ a { text-decoration: none; color: inherit; }
 
 /* 3) Larger & bolder nav items (text + icons) */
 .sidebar .navlink{
-  font-size: 18px;       /* increase label size */
+  font-size: 19px;       /* increase label size */
   font-weight: 600;      /* bolder labels */
   padding: 12px 14px;    /* a bit more touch target */
 }
@@ -166,7 +166,7 @@ a { text-decoration: none; color: inherit; }
 .section-peach{
   background: var(--brand-1);               /* peach fill */
   min-height: calc(100vh - 60px);           /* fill below the header */
-  padding: 18px;
+  padding: 19px;
   /* optional: soften the area a bit */
   background-image: linear-gradient(180deg,
     rgba(232,156,143,.96), rgba(232,156,143,.9));
